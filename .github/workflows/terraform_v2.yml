@@ -45,6 +45,16 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Import DB Subnet Group
+        run: terraform import module.rds.aws_db_subnet_group.this rds-subnet-group || echo "Already imported"
+        working-directory: envs/dev
+        continue-on-error: true
+
+      - name: Terraform Import Security Group
+        run: terraform import module.rds.aws_security_group.this sg-0123456789abcdef0 || echo "Already imported"
+        working-directory: envs/dev
+        continue-on-error: true
+
       - name: Terraform Format
         run: terraform fmt -check
 
