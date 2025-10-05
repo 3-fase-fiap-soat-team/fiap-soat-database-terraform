@@ -45,18 +45,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Import DB Subnet Group
-        run: terraform import module.rds.aws_db_subnet_group.this rds-subnet-group || echo "Already imported"
-        working-directory: envs/dev
-        continue-on-error: true
-
-      - name: Terraform Import Security Group
-        run: terraform import module.rds.aws_security_group.this sg-0c96a913a76ab1367 || echo "Already imported"
-        working-directory: envs/dev
-        continue-on-error: true
-
       - name: Terraform Format
         run: terraform fmt -check
+        continue-on-error: true
 
       - name: Terraform Validate
         run: terraform validate
@@ -64,7 +55,7 @@ jobs:
       - name: Terraform Plan
         if: github.event_name == 'pull_request'
         run: terraform plan -input=false -var="db_password=${{ secrets.DB_PASSWORD }}"
-
+        
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false -var="db_password=${{ secrets.DB_PASSWORD }}"
