@@ -1,10 +1,10 @@
-db_password = "SuperSecret123!"       # Em produção use GitHub Secrets
-vpc_id      = "vpc-0bc479b582e33b241" # Substitua pelo ID da sua VPC do LAB
+db_password = "SuperSecret123!"
+vpc_id      = "vpc-0f8b460d4c712bc5f"  # VPC default do AWS Academy
 subnet_ids = [
-  "subnet-0c00fd754c4fe4305",
-  "subnet-0c5f846c7a41656d4",
-  "subnet-05296f706c91a1df8",
-  "subnet-0c534eacf07fde00c",
-  "subnet-01cf476ef5fe31d92",
-  "subnet-0f7c2a12c4f68b254" # Substitua pelos IDs reais das subnets
+  "subnet-0683c2feb71cdbf11",   # us-east-1a
+  "subnet-0cf9364f289f58c73",   # us-east-1b
+  "subnet-0701d5149fa87a828",   # us-east-1c
+  "subnet-0a151b1777dcefb70",   # us-east-1d
+  "subnet-00402ed82cc3b0806",   # us-east-1e
+  "subnet-053fd67f108fa6c9b"    # us-east-1f
 ]

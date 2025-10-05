@@ -20,3 +20,19 @@ module "rds" {
   vpc_id     = var.vpc_id
 }
 
+# Outputs do módulo RDS
+output "rds_endpoint" {
+  description = "Endpoint do banco de dados RDS"
+  value       = module.rds.rds_endpoint
+}
+
+output "rds_db_name" {
+  description = "Nome do banco de dados criado"
+  value       = module.rds.rds_db_name
+}
+
+output "rds_username" {
+  description = "Usuário administrador do banco de dados"
+  value       = module.rds.rds_username
+  sensitive   = true
+}
